@@ -1,0 +1,15 @@
+.Interface {
+  width: 20em;
+  height: 15em;
+  margin: inherit;
+  table-layout: fixed;
+}
+
+.Interface-cell {
+  height: 100%;
+}
+
+.Interface-button {
+  height: 100%;
+  width: 100%;
+}
