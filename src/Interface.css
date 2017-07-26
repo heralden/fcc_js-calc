@@ -1,15 +1,38 @@
 .Interface {
-  width: 20em;
-  height: 15em;
-  margin: inherit;
+  width: 39em;
+  height: 35em;
+  margin: 1em 1em;
   table-layout: fixed;
 }
 
-.Interface-cell {
-  height: 100%;
+.Interface-button {
+  font-family: inherit;
+  font-weight: bold;
+  height: 1.8em;
+  width: 2.6em;
+  display: block;
+  font-size: 3em;
+  color: hsl(30, 5%, 95%);
+  background-color: hsl(30, 5%, 75%); 
+  box-shadow: 0 0.15em hsl(30, 5%, 45%);
+  border: 0;
+  border-radius: 0.5em;
 }
 
-.Interface-button {
-  height: 100%;
-  width: 100%;
+.dualwidth {
+  width: 5.8em;
+}
+
+.dualheight {
+  height: 4em;
+}
+
+.operator {
+  background-color: hsl(30, 10%, 40%); 
+  box-shadow: 0 0.15em hsl(30, 5%, 20%);
+}
+
+.function {
+  background-color: hsl(30, 80%, 60%); 
+  box-shadow: 0 0.15em hsl(30, 80%, 40%);
 }

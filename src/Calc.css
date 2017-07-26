@@ -1,5 +1,12 @@
 .Calc {
+  width: 40em;
   margin: 0 auto;
   margin-top: 10em;
   text-align: center;
+  background-color: hsl(30, 10%, 32%);
+  border: 0.8em solid hsl(30, 10%, 20%);
+  border-radius: 0.6em;
+  padding-top: 1em;
+  font-family: Century Gothic;
+  box-shadow: 0.5em 0.5em hsl(30, 10%, 28%);
 }

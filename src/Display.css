@@ -1,0 +1,22 @@
+.Display {
+  top: 12em;
+  font-family: Lucida Console;
+  background-color: hsl(60, 10%, 50%);
+  border: 0.8em solid hsl(30, 10%, 80%); 
+  border-radius: 0.4em;
+  padding: 0.3em 1em;
+  margin: 1em 1.5em;
+  box-shadow: inset 0 0 1em hsl(60, 10%, 30%);
+}
+
+.Display-text {
+  display: block;
+  text-align: right;
+  font-size: 4em;
+}
+
+.Display-subtext {
+  display: block;
+  text-align: right;
+  font-size: 2em;
+}

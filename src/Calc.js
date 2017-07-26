@@ -7,7 +7,7 @@ class Calc extends Component {
   render() {
     return (
       <div className="Calc">
-        <Display text="Calculating..." subtext="1+1" />
+        <Display text="1234567890" subtext="1+1" />
         <Interface />
       </div>
     );
