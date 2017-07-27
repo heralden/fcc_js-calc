@@ -18,7 +18,8 @@ const Interface = props => (
             colSpan={e.colSpan || 1}
           >
             <button type="button" 
-              className={getButtonClass("Interface-button", e)}>
+              className={getButtonClass("Interface-button", e)}
+              onClick={props.onAction(e.text)}>
               {e.text}
             </button>
           </td>
