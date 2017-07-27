@@ -8,6 +8,7 @@
 .Interface-button {
   font-family: inherit;
   font-weight: bold;
+  text-align: center;
   height: 1.8em;
   width: 2.6em;
   display: block;
