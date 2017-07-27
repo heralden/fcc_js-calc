@@ -17,7 +17,14 @@
   background-color: hsl(30, 5%, 75%); 
   box-shadow: 0 0.15em hsl(30, 5%, 45%);
   border: 0;
+  outline: 0;
   border-radius: 0.5em;
+}
+
+.Interface-button:active {
+  position: relative;
+  top: 0.15em;
+  box-shadow: 0 0 0;
 }
 
 .dualwidth {
