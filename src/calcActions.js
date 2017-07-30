@@ -58,6 +58,7 @@ const equal = (action, inp, sub) => {
     input: inp,
     subinput: sub
   };
+  // eslint-disable-next-line
   let res = eval(sub.reduce((acc, e) => acc.concat(e), ""));
   return {
     input: res,
