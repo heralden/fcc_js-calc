@@ -10,22 +10,24 @@ const Interface = props => (
       <col width="25%"/>
       <col width="25%"/>
     </colgroup>
-    {buttons.map(row => (
-      <tr className="Interface-row">
-        {row.map(e => (
-          <td className="Interface-cell"
-            rowSpan={e.rowSpan || 1}
-            colSpan={e.colSpan || 1}
-          >
-            <button type="button" 
-              className={getButtonClass("Interface-button", e)}
-              onClick={props.onAction(e.text)}>
-              {e.text}
-            </button>
-          </td>
-        ))}
-      </tr>
-    ))}
+    <tbody>
+      {buttons.map(row => (
+        <tr className="Interface-row">
+          {row.map(e => (
+            <td className="Interface-cell"
+              rowSpan={e.rowSpan || 1}
+              colSpan={e.colSpan || 1}
+            >
+              <button type="button" 
+                className={getButtonClass("Interface-button", e)}
+                onClick={props.onAction(e.text)}>
+                {e.text}
+              </button>
+            </td>
+          ))}
+        </tr>
+      ))}
+    </tbody>
   </table>
 );
 

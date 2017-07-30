@@ -1,14 +1,24 @@
 const actionHandler = (action, inp, sub) => {
-  switch (action) {
-    case 'AC': return allClear(); 
-    case 'CE': return clearEntry(sub);
-    case '-':
-    case '/':
-    case '•':
-    case '+':  return operator(action, sub);
-    //case '=':  return equal();
-    //case ',':  return decimal(inp, sub);
-    default:   return number(action, inp, sub);
+  if (action === 'AC') return allClear();
+  else if (action === 'CE') return clearEntry(sub);
+  else { 
+
+    if (alreadyEqualed(sub))
+      sub = [].concat(last(sub));
+
+    if (action === '-' 
+      || action === '/'
+      || action === '•'
+      || action === '+')
+      return operator(action, inp, sub);
+
+    if (action === ',')
+      return decimal(inp, sub);
+
+    if (action === '=')
+      return equal(action, inp, sub);
+
+    return number(action, inp, sub);
   }
 }
 
@@ -19,25 +29,45 @@ const allClear = () => ({
   subinput: [ 0 ]
 });
 
-const clearEntry = sub => ({
-  input: 0,
-  subinput: sub.length <= 1 ? [ 0 ] : pop(sub)
-});
+const clearEntry = sub => {
+  if (alreadyEqualed(sub)) {
+    return {
+      input: last(pop(pop(sub))),
+      subinput: sub.length <= 1 ? [ 0 ] : pop(pop(sub))
+    };
+  } else {
+    return {
+      input: last(pop(sub)) || 0,
+      subinput: sub.length <= 1 ? [ 0 ] : pop(sub)
+    };
+  }
+}
 
-const operator = (operand, sub) => ({
-  input: operand,
+const operator = (operand, inp, sub) => ({
+  input: isNaN(inp) ? inp : operand,
   subinput: isNaN(last(sub)) ? sub : sub.concat([ international(operand) ])
 });
 
-/*
 const decimal = (inp, sub) => ({
-  input: concatDecimal(inp, '.'),
-  subinput:
-  */
+  input: isNaN(inp) ? inp : concatDecimal(inp, '.'),
+  subinput: isNaN(last(sub)) ? sub : [].concat(pop(sub), concatDecimal(last(sub), '.'))
+});
+
+const equal = (action, inp, sub) => {
+  if (isNaN(last(sub))) return {
+    input: inp,
+    subinput: sub
+  };
+  let res = eval(sub.reduce((acc, e) => acc.concat(e), ""));
+  return {
+    input: res,
+    subinput: [].concat(sub, action, res)
+  };
+}
 
 const number = (num, inp, sub) => ({
-  input: concatAndParse(inp, num),
-  subinput: isNaN(last(sub)) ? sub.concat([ num ])
+  input: isNaN(inp) ? num : concatAndParse(inp, num),
+  subinput: isNaN(last(sub)) ? [].concat(sub, [ parseFloat(num) ])
     : [].concat(pop(sub), concatAndParse(last(sub), num))
 });
 
@@ -46,4 +76,5 @@ const last = arr => arr[arr.length - 1]
 const international = e => "".concat(e).replace(',', '.').replace('•', '*')
 const concat = (a, b) => "".concat(a, b)
 const concatAndParse = (a, b) => parseFloat("".concat(a, b))
-const concatDecimal = (inp, dec) => "".concat(inp).search('.') ? inp : concat(inp, dec)
+const concatDecimal = (inp, dec) => "".concat(inp).includes('.') ? inp : concat(inp, dec)
+const alreadyEqualed = sub => sub.includes('=')
