@@ -8,5 +8,5 @@
   border-radius: 0.6em;
   padding-top: 1em;
   font-family: Century Gothic;
-  box-shadow: 0.5em 0.5em hsl(30, 10%, 28%);
+  box-shadow: 0 0 0.6em 0.2em hsl(30, 10%, 28%);
 }
